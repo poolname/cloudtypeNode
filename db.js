@@ -11,7 +11,7 @@ const db = require('mysql2');
 // });
 
 const conn = db.createPool({
-    host : 'localhost', //127.0.0.1 써도 됨
+    host : 'mariadb', //127.0.0.1 써도 됨
     user : 'shilla',
     password : '1234',
     database : 'hotel_db'
