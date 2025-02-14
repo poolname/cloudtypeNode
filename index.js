@@ -140,6 +140,18 @@ app.use('/bk/find', findRouter);
 //     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // });
 
+const corsOptions = {
+    origin: [
+        process.env.SERVER_ADDRESS, // Node.js 호스팅 주소
+        process.env.SERVICE_ADDRESS, // React 호스팅 주소
+        "http://localhost:3000",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+};
+
+app.use(cors(corsOptions));
+
 app.listen(5002, () => {
     console.log('5002 2차 프로젝트 DB 연결 서버 실행');
 });
