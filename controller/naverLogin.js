@@ -5,7 +5,7 @@ const axios = require('axios');
 const {CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, STATE} = require('./naverLoginInfo');
 let naverLoginUrl = ``
 
-
+bkURL = process.env.REACT_APP_BACK_URL;
 
 module.exports = () => {//1단계 - 이미 로그인 돼있다면 이 화면은 생략되고 callback으로 이동
     
@@ -76,7 +76,8 @@ module.exports = () => {//1단계 - 이미 로그인 돼있다면 이 화면은 
                         email: userData.email,
                         grade: 3,
                     };
-                    // return res.redirect(`http://localhost:5002/bk/naverLogin/check`);
+                    // return res.redirect(`${bkURL}/naverLogin/check`);
+                    // return res.redirect(bkURL + '/naverLogin/check');
                     return res.redirect
                     (`http://localhost:3000/callback?code=${code}&state=${state}&access_token=${access_token}&grade=${userData.grade}&userData=${JSON.stringify(userData)}`);
                     // return res.json({ loggedIn: true, user: req.session.user });
