@@ -6,7 +6,7 @@ const cors = require('cors'); // 다른 포트에서 들어와도 열어주는 �
 const multer = require('multer'); // 자동으로 파일 업로드 처리를 해주겠다.
 const path = require('path');
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
  
 app.listen(PORT, () => {
   console.log(`Server Listening on ${PORT}`);
