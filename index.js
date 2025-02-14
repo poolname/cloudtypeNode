@@ -19,11 +19,21 @@ app.use(
     })
 );
 
-// app.use(cors()); //다른 포트에서 들어와도 열어주도록 cors 세팅
-app.use(cors({
-    origin: 'http://localhost:3000',  // React 클라이언트 URL
-    credentials: true,  // 쿠키 포함
-}));
+
+const corsOptions = {
+    origin: [
+        process.env.SERVER_ADDRESS, // Node.js 호스팅 주소
+        process.env.SERVICE_ADDRESS, // React 호스팅 주소
+        "http://localhost:3000",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+};
+
+app.use(cors(corsOptions));
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // JSON 파싱 미들웨어 추가
@@ -140,17 +150,7 @@ app.use('/bk/find', findRouter);
 //     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // });
 
-const corsOptions = {
-    origin: [
-        "https://port-0-cloudtypenode-m6szyrxq03f42d77.sel4.cloudtype.app",
-        "https://web-hotel-react-m6szyrxq03f42d77.sel4.cloudtype.app",
-        "http://localhost:3000",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-};
 
-app.use(cors(corsOptions));
 
 app.listen(5002, () => {
     console.log('5002 2차 프로젝트 DB 연결 서버 실행');
