@@ -110,7 +110,7 @@ const offerReserveRouter = require('./controller/reserveOffer.js');
 app.use('/bk/reserve', offerReserveRouter);
 // toss api 라우터 추가가
 const paymentRouter = require('./controller/reservations.js');
-app.use('/api/payment', paymentRouter);
+app.use('/bk/api/payment', paymentRouter);
 // myPage reserve 라우터 추가
 // const myPageReserveRouter = require("./controller/myPageReservation.js");
 // app.use("/bk/myPage/myReservation", myPageReserveRouter);
