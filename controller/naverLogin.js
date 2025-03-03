@@ -51,10 +51,10 @@ module.exports = () => {//1단계 - 이미 로그인 돼있다면 이 화면은 
                     // console.log('existingUser : ',existingUser)
                     if (existingUser && existingUser.length > 0) {
                         req.session.user = existingUser[0];
-                        // return res.redirect(`http://localhost:3000/callback?response_type=${code}&client_id=${CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}`);
+                        // return res.redirect(`https://web-hotel-react-m6szyrxq03f42d77.sel4.cloudtype.app/callback?response_type=${code}&client_id=${CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}`);
                         // console.log('existingUser있을때 : ',req.session.user)
                         return res.redirect
-                        (`http://localhost:3000/callback?code=${code}&state=${state}&access_token=${access_token}&grade=${userData.grade}&userData=${JSON.stringify(userData)}`);
+                        (`https://web-hotel-react-m6szyrxq03f42d77.sel4.cloudtype.app/callback?code=${code}&state=${state}&access_token=${access_token}&grade=${userData.grade}&userData=${JSON.stringify(userData)}`);
                     } else {
                         // console.log('existingUser없을때')
                         // console.log('userData :',userData)
@@ -79,7 +79,7 @@ module.exports = () => {//1단계 - 이미 로그인 돼있다면 이 화면은 
                     // return res.redirect(`${bkURL}/naverLogin/check`);
                     // return res.redirect(bkURL + '/naverLogin/check');
                     return res.redirect
-                    (`http://localhost:3000/callback?code=${code}&state=${state}&access_token=${access_token}&grade=${userData.grade}&userData=${JSON.stringify(userData)}`);
+                    (`http://https://web-hotel-react-m6szyrxq03f42d77.sel4.cloudtype.app/callback?code=${code}&state=${state}&access_token=${access_token}&grade=${userData.grade}&userData=${JSON.stringify(userData)}`);
                     // return res.json({ loggedIn: true, user: req.session.user });
                 }
             } else {
